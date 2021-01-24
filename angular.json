@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "music-search-angular"
+    }
+  },
+  "defaultProject": "music-search-angular",
+  "cli": {
+    "analytics": false
+  }
 }

@@ -1,0 +1,44 @@
+
+<body>
+    <header>
+        <div id="header" class="col">
+            <div class='input-container'>
+                <input
+                 id='search'
+                 placeholder="Enter the name of the musician"
+                 type="search"
+                 [(ngModel)]="query"
+                 (ngModelChange)="searchCovers()"
+                >
+            </div>
+            <div id="rest-of-header">
+                <h1>Music search</h1>
+                <p>Powered <br> by</p>
+                <a href="https://last.fm"
+                 target="_blank">
+                 <img id="image"
+                 src="../../assets/images/lastfm2.jpg"
+                 alt="">
+                </a>
+            </div>
+        </div>
+    </header>
+    <div id="main-1">
+            <div *ngIf="covers!='The artist you supplied could not be found';else noCovers" id="main"> 
+                <div *ngFor="let cover of covers; let i = index">
+                        <img src='{{cover.image[3]["#text"]}}'
+                        onerror="this.src='../assets/images/no-image-found.jpg';"
+                        id="{{i}}" class="poster" alt="{{cover.name}}"
+                       >  
+                </div>
+                <div class="non-flex">
+                    <button class="btn" *ngIf="covers" id="previous" (click)="previousPage()">&laquo; Previous</button>
+                    <button class="btn" *ngIf="covers" id="next" (click)="nextPage()">Next&raquo;</button>
+                </div>
+        
+            </div>
+            <ng-template #noCovers>
+                <h2 class="no-result">No results for {{this.query}}</h2>
+            </ng-template>
+    </div>
+   
